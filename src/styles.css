@@ -1,0 +1,114 @@
+:root {
+  --primary-color: rgb(174, 44, 174);
+  --secondary-color: #121212;
+  --secondary-text-color: #79848e;
+}
+
+.navbar {
+  border-bottom: 1px solid var(--secondary-color);
+}
+
+.hero-section h1 .brand {
+  color: var(--primary-color);
+}
+.hero-section p {
+  text-align: justify;
+  font-size: 1.1rem;
+  color: var(--secondary-text-color);
+}
+.hero-section .hero-right {
+  justify-content: end;
+}
+.hero-section button {
+  background-color: var(--primary-color);
+  padding: 0.5rem 1rem;
+  text-transform: capitalize;
+  font-size: 1rem;
+}
+
+.features .cards .card {
+  background-color: var(--secondary-color);
+  background: none;
+  border: 1px solid var(--secondary-text-color);
+  color: var(--secondary-text-color);
+  padding: 1rem;
+  background-color: var(--secondary-color);
+}
+@media screen and (max-width: 572px) {
+  .features .cards .card {
+    padding: 0px;
+  }
+}
+
+.card-lg {
+  padding: 2.5rem;
+}
+.card-lg .card-container {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.card-lg .card-container h2 {
+  color: white;
+}
+.card-lg .card-container h6 {
+  line-height: 2rem;
+  color: var(--secondary-text-color);
+}
+@media screen and (max-width: 992px) {
+  .card-lg .card-container {
+    flex-direction: column;
+  }
+}
+
+.footer {
+  border-top: 1px solid var(--secondary-color);
+  width: 100%;
+}
+.footer small {
+  line-height: 1.5rem;
+  color: var(--secondary-text-color);
+}
+.footer .socials {
+  font-size: 1rem;
+}
+.footer .copyright small {
+  font-size: 0.6rem;
+  color: var(--secondary-text-color);
+  text-align: center;
+}
+.footer hr {
+  margin: 0px;
+}
+
+.home h3 {
+  color: var(--primary-color);
+}
+.home .add-videos .add-btn {
+  cursor: pointer;
+}
+.home .video-container .video-card {
+  background-color: var(--secondary-color);
+  border: 1px solid var(--secondary-text-color);
+}
+.home .video-container .video-card h6 {
+  color: var(--secondary-text-color);
+}
+
+.history {
+  min-height: 49vh;
+}
+.history h3 {
+  color: var(--primary-color);
+}
+
+.modal-content {
+  color: white;
+  background-color: var(--secondary-color) !important;
+}
+
+@media screen and (max-width: 572px) {
+  .card-lg {
+    padding: 1.5rem;
+  }
+}/*# sourceMappingURL=styles.css.map */

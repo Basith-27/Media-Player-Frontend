@@ -1,0 +1,157 @@
+:root {
+  --primary-color: rgb(174, 44, 174);
+  --secondary-color: #121212;
+  --secondary-text-color: #79848e;
+}
+
+// <------ HEADER STYLES ------>
+
+.navbar {
+  border-bottom: 1px solid var(--secondary-color);
+}
+
+// <------ LANDING PAGE STYLES ------>
+
+.hero-section {
+  h1 {
+    .brand {
+      color: var(--primary-color);
+    }
+  }
+  p {
+    text-align: justify;
+    font-size: 1.1rem;
+    color: var(--secondary-text-color);
+  }
+
+  .hero-right {
+    justify-content: end;
+  }
+
+  button {
+    background-color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    text-transform: capitalize;
+    font-size: 1rem;
+  }
+}
+
+.features {
+  .cards {
+    .card {
+      background-color: var(--secondary-color);
+      background: none;
+      border: 1px solid var(--secondary-text-color);
+      color: var(--secondary-text-color);
+      padding: 1rem;
+      background-color: var(--secondary-color);
+    }
+
+    @media screen and (max-width: 572px) {
+      .card {
+        padding: 0px;
+      }
+    }
+  }
+}
+
+.card-lg {
+  padding: 2.5rem;
+
+  .card-container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    h2 {
+      color: #ffff;
+    }
+
+    h6 {
+      line-height: 2rem;
+      color: var(--secondary-text-color);
+    }
+  }
+
+  @media screen and (max-width: 992px) {
+    .card-container {
+      flex-direction: column;
+    }
+  }
+}
+
+// <------ FOOTER STYLES ------>
+
+.footer {
+  // background-color: var(--secondary-color);
+  border-top: 1px solid var(--secondary-color);
+  width: 100%;
+
+  small {
+    line-height: 1.5rem;
+    color: var(--secondary-text-color);
+  }
+
+  .socials {
+    font-size: 1rem;
+  }
+
+  .copyright {
+    small {
+      font-size: 0.6rem;
+      color: var(--secondary-text-color);
+      text-align: center;
+    }
+  }
+
+  hr {
+    margin: 0px;
+  }
+}
+
+// <------ HOME STYLES ------>
+
+.home {
+  h3 {
+    color: var(--primary-color);
+  }
+
+  .add-videos {
+    .add-btn {
+      cursor: pointer;
+    }
+  }
+
+  .video-container {
+    .video-card {
+      background-color: var(--secondary-color);
+      border: 1px solid var(--secondary-text-color);
+
+      h6 {
+        color: var(--secondary-text-color);
+      }
+    } 
+  }
+}
+
+// <------ MODAL STYLES ------>
+
+.history {
+  min-height: 49vh;
+  h3 {
+    color: var(--primary-color);
+  }
+}
+
+// <------ MODAL STYLES ------>
+
+.modal-content {
+  color: #ffff;
+  background-color: var(--secondary-color) !important;
+}
+
+@media screen and (max-width: 572px) {
+  .card-lg {
+    padding: 1.5rem;
+  }
+}

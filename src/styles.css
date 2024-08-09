@@ -81,6 +81,9 @@
   margin: 0px;
 }
 
+.home {
+  min-height: 56vh;
+}
 .home h3 {
   color: var(--primary-color);
 }

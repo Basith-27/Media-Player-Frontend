@@ -1,8 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaArrowLeftLong, FaTrash } from 'react-icons/fa6'
 import { Link } from 'react-router-dom'
+import axios from '../api/axios'
 
 const History = () => {
+
+    const [history, setHistory] = useState([]);
+
+    const fetchHistory = async () => {
+        try {
+            const response = await axios.get('/api/watchhistory');
+            setHistory(response.data);
+        } catch (error) {
+            console.error('Failed to fetch history', error);
+        }
+    };
+
+    const deleteHistoryItem = async (id) => {
+        try {
+            await axios.delete(`/api/watchhistory/${id}`);
+            setHistory(history.filter(item => item.id !== id));
+        } catch (error) {
+            console.error('Failed to delete history item', error);
+        }
+    };
+
+    useEffect(() => {
+        fetchHistory();
+    }, []);
+
     return (
         <div className='history'>
             <div className='container d-flex mt-5 mb-5 justify-content-between align-items-center'>
@@ -25,13 +51,19 @@ const History = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Figma Tutorial</td>
-                            <td>https://www.youtube.com/embed/cTUD_vCrY7M</td>
-                            <td>10/10/2023, 03:17:03 PM</td>
-                            <td><div className='text-danger'><FaTrash /></div></td>
-                        </tr>
+                        {history.map((item, index) => (
+                            <tr key={item.id}>
+                                <td>{index + 1}</td>
+                                <td>{item.caption}</td>
+                                <td><a href={item.url} target='_blank' rel='noopener noreferrer'>{item.url}</a></td>
+                                <td>{new Date(item.timestamp).toLocaleString()}</td>
+                                <td>
+                                    <div className='text-danger' onClick={() => deleteHistoryItem(item.id)}>
+                                        <FaTrash style={{cursor: 'pointer'}} />
+                                    </div>
+                                </td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>

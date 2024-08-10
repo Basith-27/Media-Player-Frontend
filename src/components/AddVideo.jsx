@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { Button, Modal, Form } from 'react-bootstrap';
 import { IoAddCircleSharp } from "react-icons/io5";
 import axios from '../api/axios'
-import { v4 as uuidv4 } from 'uuid';
 
 function AddVideo({ setUploadVideoServerResponse }) {
 
@@ -17,23 +16,24 @@ function AddVideo({ setUploadVideoServerResponse }) {
   const handleShow = () => setShow(true);
 
   const handleUpload = async () => {
-
-    // Generate a unique ID and update the state with it
-    const uniqueId = uuidv4();
-    const newVideo = { ...video, Id: uniqueId };
-
-    try {
-      const response = await axios.post('/api/videos', newVideo);
-      if (response.status === 201) {
-        alert("Video Uploaded Successfully!");
-        setUploadVideoServerResponse(response.data)
-        handleClose();
-      } else {
-        alert(`Upload failed with status: ${response.status}`);
+    const { Caption, ImageUrl, VideoUrl } = video
+    if (!Caption || !ImageUrl || !VideoUrl) {
+      alert("Please fill the form completely!!!")
+    }
+    else {
+      try {
+        const response = await axios.post('/api/videos', video);
+        if (response.status === 201) {
+          alert("Video Uploaded Successfully!");
+          setUploadVideoServerResponse(response.data)
+          handleClose();
+        } else {
+          alert(`Upload failed with status: ${response.status}`);
+        }
+      } catch (error) {
+        console.error('Failed to upload video', error);
+        alert("Failed to upload video. Please try again.");
       }
-    } catch (error) {
-      console.error('Failed to upload video', error);
-      alert("Failed to upload video. Please try again.");
     }
   }
 
@@ -58,9 +58,6 @@ function AddVideo({ setUploadVideoServerResponse }) {
         <Modal.Body>
           <p>Please Fill the following details !!!</p>
           <Form className='py-3'>
-            {/* <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Control type="text" placeholder="Enter Video ID" onChange={(e) => setVideo({ ...video, Id: e.target.value })} />
-            </Form.Group> */}
 
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Control type="text" placeholder="Enter Video Caption" onChange={(e) => setVideo({ ...video, Caption: e.target.value })} />
@@ -71,7 +68,7 @@ function AddVideo({ setUploadVideoServerResponse }) {
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Control type="text" placeholder="Enter Youtube Video Link" onChange={(e) => setVideo({...video, VideoUrl: e.target.value})} />
+              <Form.Control type="text" placeholder="Enter Youtube Video Link" onChange={(e) => setVideo({ ...video, VideoUrl: e.target.value })} />
             </Form.Group>
 
           </Form>

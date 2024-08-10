@@ -8,8 +8,20 @@ function VideoCard({ video, onDelete, setDeleteVideoStatus }) {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
-    const handleShow = async () => setShow(true);
 
+    const handleShow = async () => {
+        setShow(true);
+        try {
+            await axios.post('/api/watchhistory', {
+                id:"",
+                videoId: video.id,
+                caption: video.caption,
+                url: isYouTubeUrl ? getEmbedUrl(video.videoUrl) : video.videoUrl,
+            });
+        } catch (error) {
+            console.error('Failed to save watch history', error);
+        }
+    } 
 
     const handleDelete = async () => {
         try {

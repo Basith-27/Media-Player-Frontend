@@ -1,6 +1,6 @@
 import Header from './components/Header'
 import './styles.css';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import LandingPage from './pages/LandingPage';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -20,6 +20,7 @@ function App() {
           <Route path='/' element={<LandingPage />} />
           <Route path='/home' element={<Home />} />
           <Route path='/history' element={<History />} />
+          <Route path='/*' element={<Navigate to={'/'} />} />
         </Routes>
         <Footer />
     </>

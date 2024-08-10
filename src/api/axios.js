@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-    baseURL: 'http://localhost:5257',
+    baseURL: 'https://media-player-backed.onrender.com',
     headers: {
         'Content-Type': 'application/json',
     },
